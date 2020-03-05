@@ -1,15 +1,11 @@
 const express = require('express');
 const User = require('../models/User');
-const authConfig = require('../../config/auth.json');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-
-const mailer = require('../../modules/mailer');
-
 const sgMail = require('@sendgrid/mail');
-const key = require('../../config/sendgrid.json');
-sgMail.setApiKey(key.SENDGRID_API_KEY);
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 const router = express.Router();
@@ -34,7 +30,7 @@ router.post('/register', async (req, res) => {
 });
 
 function generateToken(params = {}) {
-    return jwt.sign({ params }, authConfig.secret, { expiresIn: 86400 });
+    return jwt.sign({ params }, process.env.SECRET_HASH, { expiresIn: 86400 });
 }
 
 router.post('/authenticate', async (req, res) => {

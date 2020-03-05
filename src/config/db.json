@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://tatuidb:tatuidb@node-gvco1.mongodb.net/solmais?retryWrites=true&w=majority",
-    "mongoURILocal": "mongodb://localhost/api"
-}
