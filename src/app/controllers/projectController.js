@@ -42,7 +42,6 @@ router.post('/', async (req, res) => {
         await project.save();
         return res.send({ project });
     } catch (err) {
-        console.log(err);
         return res.status(400).send({ error: 'Error creating new project ' });
     }
 });
