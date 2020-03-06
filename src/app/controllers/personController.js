@@ -9,7 +9,7 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const persons = await Person.find().populate('zipCode');
+        const persons = await Person.find();
 
         return res.send({ persons });
     } catch (err) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:personId', async (req, res) => {
     try {
-        const person = await Person.findById(req.params.personId).populate('zipCode');
+        const person = await Person.findById(req.params.personId);
         return res.send({ person });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading Person ' });
