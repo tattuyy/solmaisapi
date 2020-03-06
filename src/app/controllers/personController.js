@@ -9,9 +9,9 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
     try {
-        const Persons = await Person.find().populate('zipCode');
+        const persons = await Person.find().populate('zipCode');
 
-        return res.send({ Persons });
+        return res.send({ persons });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading Persons ' });
     }
@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:personId', async (req, res) => {
     try {
-        const Person = await Person.findById(req.params.personId).populate('zipCode');
-        return res.send({ Person });
+        const person = await Person.findById(req.params.personId).populate('zipCode');
+        return res.send({ person });
     } catch (err) {
         return res.status(400).send({ error: 'Error loading Person ' });
     }
@@ -28,8 +28,8 @@ router.get('/:personId', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const Person = await Person.create(req.body);
-        return res.send({ Person });
+        const person = await Person.create(req.body);
+        return res.send({ person });
     } catch (err) {
         return res.status(400).send({ error: 'Error creating new Person ' });
     }
@@ -37,8 +37,8 @@ router.post('/', async (req, res) => {
 
 router.put('/:PersonId', async (req, res) => {
     try {
-        const Person = await Person.findByIdAndUpdate(req.params.PersonId, req.body, { new: true });
-        return res.send({ Person });
+        const person = await Person.findByIdAndUpdate(req.params.PersonId, req.body, { new: true });
+        return res.send({ person });
     } catch (err) {
         return res.status(400).send({ error: 'Error updating Person ' });
     }
