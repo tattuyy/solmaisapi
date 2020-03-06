@@ -1,21 +1,14 @@
 const mongoose = require('../../database');
 
-const PersonSchema = new mongoose.Schema({
-    kindOfPerson: {
-        type: String,
-        require: true,
-        enum: ['Cliente', 'Fornecedor'],
-        default: 'Cliente'
-    },
+const SupplierSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
     },
     document: {
         type: String,
-        required: true,
-        enum: ['CNPJ', 'CPF'],
-        default: 'CPF'
+        required: true,       
+        default: 'CNPJ'
     },
     numberDocument: {
         type: String,
@@ -63,6 +56,6 @@ const PersonSchema = new mongoose.Schema({
     },
 });
 
-const Person = mongoose.model('Person', PersonSchema);
+const Supplier = mongoose.model('Supplier', SupplierSchema);
 
-module.exports = Person;
+module.exports = Supplier;
